@@ -29,8 +29,13 @@ public class Day {
             }
         }
         turns.add(turn);
-        if (turns.size() == game.getNbPlayers()) {
-            game.genNextDay();
-        }
+    }
+
+    public Dice getDice(int index) {
+        return dices.get(index);
+    }
+
+    public int playedTurns() {
+        return turns.size();
     }
 }

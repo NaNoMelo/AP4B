@@ -7,9 +7,8 @@ public class Player {
     private Sheet sheet;
     private int highScore;
 
-    public Player(String name, int ID) {
+    public Player(String name) {
         this.name = name;
-        this.ID = ID;
     }
 
     public String getName() {
@@ -18,6 +17,10 @@ public class Player {
 
     public void setSheet(Sheet sheet) {
         this.sheet = sheet;
+    }
+
+    public Sheet getSheet() {
+        return sheet;
     }
 
     public int getID() {

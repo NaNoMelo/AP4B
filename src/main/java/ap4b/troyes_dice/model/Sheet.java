@@ -90,7 +90,7 @@ public class Sheet {
         buildings.add(new Building(color, value, type));
     }
 
-    public void destroyBuildings(Color color, int value) {
+    public void destroyBuilding(Color color, int value) {
         if (!hasBuilding(Color.RED, value, BuildingType.PRESTIGE)) {
             if (!hasBuilding(color, value, BuildingType.DESTROYED)) {
                 buildings.add(new Building(color, value, BuildingType.DESTROYED));
