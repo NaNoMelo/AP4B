@@ -3,9 +3,9 @@ package ap4b.troyes_dice.model;
 import java.util.Random;
 
 public enum Color {
-    Red,
-    Yellow,
-    White;
+    RED,
+    YELLOW,
+    WHITE;
 
     public static Color getRandom() {
         Random random = new Random();

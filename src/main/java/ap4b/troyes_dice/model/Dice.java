@@ -5,20 +5,19 @@ import java.util.Random;
 public class Dice implements Comparable<Dice> {
     private Color color;
     private int value;
-    private boolean black;
-
-    public Dice(){
-        this (false);
-    }
+    private boolean black = false;
+    private int cost = 0;
 
     public Dice(boolean black) {
-        this(black, Color.getRandom());
-    }
-
-    public Dice(boolean black, Color color) {
         value = new Random().nextInt(1, 7);
         this.black = black;
+        this.color = Color.getRandom();
+    }
+
+    public Dice(int value, Color color, int cost) {
+        this.value = value;
         this.color = color;
+        this.cost = cost;
     }
 
     public int getValue() {
@@ -33,8 +32,12 @@ public class Dice implements Comparable<Dice> {
         return color;
     }
 
-    public void save() {
+    public int getCost() {
+        return cost;
+    }
 
+    public void setCost(int cost) {
+        this.cost = cost;
     }
 
     @Override
