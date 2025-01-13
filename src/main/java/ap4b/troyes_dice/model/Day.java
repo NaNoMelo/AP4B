@@ -24,11 +24,17 @@ public class Day {
 
     public void addTurn(Turn turn) throws TurnAlreadyPlayedException {
         for (Turn t : turns) {
-            if (t.getPlayer().equals(turn.getPlayer())) {
+            canPlayOrError(turn.getPlayer());
+        }
+        turns.add(turn);
+    }
+
+    public void canPlayOrError(Player player) {
+        for (Turn t : turns) {
+            if (t.getPlayer().equals(player)) {
                 throw new TurnAlreadyPlayedException();
             }
         }
-        turns.add(turn);
     }
 
     public Dice getDice(int index) {

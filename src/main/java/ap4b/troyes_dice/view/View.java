@@ -217,7 +217,7 @@ public class View {
         playersTab.removePlayerBoard(playerID);
     }
 
-    public void setPlayerScores(Map<Integer, Integer> playerScores, Map<Integer, List<Integer>> playerResources){
+    public void setPlayersScores(Map<Integer, Integer> playerScores, Map<Integer, List<Integer>> playerResources){
         for (int playerID : playerScores.keySet()){
             playersTab.setPlayerScore(playerID, playerScores.get(playerID), playerResources.get(playerID));
         }
@@ -225,6 +225,34 @@ public class View {
 
     public void clearPlayerTabs(){
         playersTab.clearPlayers();
+    }
+
+    public void selectDice(int color, int value) {
+        diceActionsPanel.selectDice(color, value);
+    }
+
+    public int getSelectedColor() {
+        return diceActionsPanel.getColor();
+    }
+
+    public int getSelectedValue() {
+        return diceActionsPanel.getValue();
+    }
+
+    public int getSelectedDice() {
+        return corePanel.getSelectedDice();
+    }
+
+    public int getSelectedPlayerID() {
+        return playersTab.getSelectedPlayerID();
+    }
+
+    public void setActionCallbacks(ActionListener getRessource, ActionListener buildWorkplace, ActionListener buildPrestige) {
+        diceActionsPanel.setActionCallbacks(getRessource, buildWorkplace, buildPrestige);
+    }
+
+    public void addOnDiceSelectAction(ActionListener action){
+        corePanel.addOnSelectAction(action);
     }
 }
 

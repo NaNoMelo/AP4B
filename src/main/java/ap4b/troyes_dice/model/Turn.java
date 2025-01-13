@@ -11,7 +11,6 @@ public class Turn {
         this.playerDice = playerDice;
         this.action = action;
         this.day = day;
-        this.execute();
     }
 
     public void execute() throws NotEnoughResourceException, TooManyResourceException, AlreadyBuiltException, BuildingDestroyedException, TurnAlreadyPlayedException {
@@ -39,8 +38,6 @@ public class Turn {
         sheet.useResource(Color.RED, playerDice.getRedCost());
         sheet.useResource(Color.WHITE, playerDice.getWhiteCost());
         sheet.useResource(Color.YELLOW, playerDice.getCost());
-
-        day.addTurn(this);
     }
 
     public Player getPlayer() {

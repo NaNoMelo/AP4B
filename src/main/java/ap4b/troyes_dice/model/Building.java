@@ -14,6 +14,18 @@ public class Building {
         this.type = type;
     }
 
+    public Color getColor() {
+        return color;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public BuildingType getType() {
+        return type;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;

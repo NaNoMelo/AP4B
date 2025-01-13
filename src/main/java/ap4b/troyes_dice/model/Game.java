@@ -9,6 +9,8 @@ public class Game {
     private ArrayList<Player> players = new ArrayList<>();
     private int nbPlayers = 0;
     boolean host;
+    Runnable newTurnCallback;
+
 
     public Game() {
     }
@@ -30,6 +32,7 @@ public class Game {
                     if (days.get(currentDay).playedTurns() >= nbPlayers) {
                         genNextDay();
                         System.out.println("Day " + currentDay);
+                        newTurnCallback.run();
                     }
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
@@ -64,5 +67,13 @@ public class Game {
 
     public int getNbPlayers() {
         return nbPlayers;
+    }
+
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
+
+    public void setNewTurnCallback(Runnable newTurnCallback) {
+        this.newTurnCallback = newTurnCallback;
     }
 }

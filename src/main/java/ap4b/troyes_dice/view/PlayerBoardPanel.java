@@ -5,6 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,9 @@ public class PlayerBoardPanel extends JPanel {
     public PlayerBoardPanel() {
         actions = new ArrayList<>();
         try {
-            boardImage = ImageIO.read(new File("/home/disk_/AP4B/src/main/resources/board.jpg"));
+            boardImage = ImageIO.read(
+                    new File("src/main/resources/board.jpg")
+            );
         } catch (IOException e) {
             System.err.println("Error loading board image: " + e.getMessage());
         }

@@ -20,7 +20,7 @@ public class PlayerDataComponent extends JPanel {
     }
 
     public void setPlayerScore(int score, int influence, int coins, int connaissance) {
-        playerScoreLabel.setText("Score: " + score + " " + "Influence" + influence + " " + "Coins" + coins + " " + "Connaissance" + connaissance);
+        playerScoreLabel.setText("Score: " + score + " " + "Influence " + influence + " " + "Coins " + coins + " " + "Connaissance " + connaissance);
     }
 
     public void setPlayerName(String playerName) {

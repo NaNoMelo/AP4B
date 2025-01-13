@@ -51,6 +51,14 @@ public class PlayersTab extends JTabbedPane {
         return playerBoards.get(playerID).getPlayerBoardPanel();
     }
 
+    public int getSelectedPlayerID() {
+        return playerBoards.entrySet().stream()
+                .filter(entry -> entry.getValue().equals(getSelectedComponent()))
+                .map(Map.Entry::getKey)
+                .findFirst()
+                .orElse(-1);
+    }
+
     public Map<Integer, PlayerTabContainer> getPlayerBoards() {
         return playerBoards;
     }

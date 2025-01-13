@@ -101,5 +101,17 @@ public class Sheet {
     public Player getPlayer() {
         return player;
     }
+
+    public List<Integer> getResources() {
+        List<Integer> resources = new ArrayList<>();
+        for( Color color : Color.values() ) {
+            resources.add(this.resources.get(color)-this.usedResources.get(color));
+        }
+        return resources;
+    }
+
+    public List<Building> getBuildings() {
+        return buildings;
+    }
 }
 
