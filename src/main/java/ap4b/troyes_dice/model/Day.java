@@ -41,6 +41,16 @@ public class Day {
         return dices.get(index);
     }
 
+    public int getDiceNumber(Color color) {
+        int count = 0;
+        for (Dice dice : dices) {
+            if (dice.getColor().equals(color)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
     public int playedTurns() {
         return turns.size();
     }

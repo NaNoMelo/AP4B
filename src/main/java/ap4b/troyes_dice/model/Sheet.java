@@ -104,14 +104,47 @@ public class Sheet {
 
     public List<Integer> getResources() {
         List<Integer> resources = new ArrayList<>();
-        for( Color color : Color.values() ) {
-            resources.add(this.resources.get(color)-this.usedResources.get(color));
+        for (Color color : Color.values()) {
+            resources.add(this.resources.get(color) - this.usedResources.get(color));
         }
         return resources;
     }
 
     public List<Building> getBuildings() {
         return buildings;
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    private int countBuildings(Color color, BuildingType type) {
+        int count = 0;
+        for (Building building : buildings) {
+            if (building.getColor().equals(color) && building.getType().equals(type)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public int getScore() {
+        int score = 0;
+        for (int ressource : resources.values()) {
+            score += ressource / 2;
+        }
+        for (int i = 1; i <= 6; i++) {
+            if (hasBuilding(Color.WHITE, i, BuildingType.PRESTIGE)) {
+                int buildingColor = ((i - 1) / 2) + 1;
+                int buildingType = i % 2 == 0 ? 2 : 1;
+                score += countBuildings(Color.values()[buildingColor], BuildingType.values()[buildingType]) * 2;
+            }
+        }
+        for (int citizen : citizens.values()) {
+            score += citizen;
+        }
+
+        return score;
     }
 }
 

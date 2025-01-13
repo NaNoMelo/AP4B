@@ -4,4 +4,5 @@ public enum Action {
     GET_RESOURCE,
     BUILD_WORKPLACE,
     BUILD_PRESTIGE,
+    SKIP
 }

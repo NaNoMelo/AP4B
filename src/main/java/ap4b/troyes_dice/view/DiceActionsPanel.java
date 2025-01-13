@@ -13,6 +13,7 @@ public class DiceActionsPanel extends JPanel {
     private final JButton getRessourceButton;
     private final JButton buildWorkplaceButton;
     private final JButton buildPrestigeButton;
+    private final JButton skipButton;
     private int color = 0;
 
     private final java.awt.Color[] colors = {
@@ -54,6 +55,8 @@ public class DiceActionsPanel extends JPanel {
         buildWorkplaceButton = new JButton("Build Workplace");
         buildPrestigeButton = new JButton("Build Prestige");
 
+        skipButton = new JButton("Skip Turn");
+
 
 
         add(changeColorButtonRed);
@@ -63,6 +66,7 @@ public class DiceActionsPanel extends JPanel {
         add(getRessourceButton);
         add(buildPrestigeButton);
         add(buildWorkplaceButton);
+        add(skipButton);
     }
 
     private void updateDice() {
@@ -84,10 +88,11 @@ public class DiceActionsPanel extends JPanel {
         updateDice();
     }
 
-    public void setActionCallbacks(ActionListener getRessource, ActionListener buildWorkplace, ActionListener buildPrestige) {
+    public void setActionCallbacks(ActionListener getRessource, ActionListener buildWorkplace, ActionListener buildPrestige, ActionListener skip) {
         getRessourceButton.addActionListener(getRessource);
         buildWorkplaceButton.addActionListener(buildWorkplace);
         buildPrestigeButton.addActionListener(buildPrestige);
+        skipButton.addActionListener(skip);
     }
 
 }

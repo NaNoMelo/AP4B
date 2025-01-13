@@ -51,7 +51,7 @@ public class Main {
             game.addPlayer(player);
         }
 
-        view.setActionCallbacks(buildActionListener(Action.GET_RESOURCE), buildActionListener(Action.BUILD_WORKPLACE), buildActionListener(Action.BUILD_PRESTIGE));
+        view.setActionCallbacks(buildActionListener(Action.GET_RESOURCE), buildActionListener(Action.BUILD_WORKPLACE), buildActionListener(Action.BUILD_PRESTIGE), buildActionListener(Action.SKIP));
 
         view.addOnDiceSelectAction(e -> {
             Dice dice = game.getCurrentDay().getDice(view.getSelectedDice());
@@ -120,7 +120,7 @@ public class Main {
         Map<Integer, Integer> scores = new HashMap<>();
         Map<Integer, List<Integer>> resources = new HashMap<>();
         for (int i = 0; i < game.getNbPlayers(); i++) {
-            scores.put(i, 0); //game.getPlayers().get(i).getSheet().getScore());
+            scores.put(i, game.getPlayers().get(i).getSheet().getScore());
             resources.put(i, game.getPlayers().get(i).getSheet().getResources());
         }
         view.setPlayersScores(scores, resources);

@@ -247,8 +247,8 @@ public class View {
         return playersTab.getSelectedPlayerID();
     }
 
-    public void setActionCallbacks(ActionListener getRessource, ActionListener buildWorkplace, ActionListener buildPrestige) {
-        diceActionsPanel.setActionCallbacks(getRessource, buildWorkplace, buildPrestige);
+    public void setActionCallbacks(ActionListener getRessource, ActionListener buildWorkplace, ActionListener buildPrestige, ActionListener skip) {
+        diceActionsPanel.setActionCallbacks(getRessource, buildWorkplace, buildPrestige, skip);
     }
 
     public void addOnDiceSelectAction(ActionListener action){
