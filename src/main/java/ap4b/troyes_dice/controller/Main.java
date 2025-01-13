@@ -33,6 +33,8 @@ public class Main {
             view.setCorePanelButtonColor(i, colors[dice.getColor().ordinal()]);
             view.setCorePanelButtonTitle(i, (dice.isBlack() ? "Black Dice : " : "Dice : ") + dice.getValue());
         }
+        Dice dice = game.getCurrentDay().getDice(view.getSelectedDice());
+        view.selectDice(dice.getColor().ordinal(), dice.getValue());
         view.revalidateFrame();
     }
 
@@ -57,7 +59,10 @@ public class Main {
         });
 
         //updatePlayerBoards();
-        game.setNewTurnCallback(Main::updateDices);
+        game.setNewTurnCallback(() -> {
+            updateDices();
+            updatePlayerBoards();
+        });
 
 
         Thread gameThread = game.startGame();
@@ -66,8 +71,6 @@ public class Main {
         // Schedule a job for the event-dispatching thread: creating and showing this application's GUI.
         javax.swing.SwingUtilities.invokeLater(() -> {
             createAndShowGUI();
-            view.setCorePanelButtonColor(0, java.awt.Color.GREEN);
-            view.revalidateFrame();
 
             view.clearPlayerTabs();
 
@@ -124,11 +127,34 @@ public class Main {
 
         for (int i = 0; i < game.getNbPlayers(); i++) {
             List<Building> buildings = game.getPlayers().get(i).getSheet().getBuildings();
-            for (Building building : buildings) {
-                if (building.getType() == BuildingType.DESTROYED) continue;
-                view.drawBuilding(i, building.getValue(), building.getColor().ordinal() * 2 + (building.getType().ordinal() - 1));
+            System.out.println("Drawing buildings for player " + i);
+            for (int value = 0; value <= 6; value++) {
+                if (buildings.contains(new Building(Color.RED, value, BuildingType.PRESTIGE))) {
+                    for (int j = 1; j <= 3; j++) {
+                        view.drawCastle(i, value, j);
+                    }
+                }
+                for (Color color : Color.values()) {
+                    for (BuildingType type : new BuildingType[]{BuildingType.PRESTIGE, BuildingType.WORKPLACE}) {
+                        if (buildings.contains(new Building(color, value, type))) {
+                            view.drawBuilding(i, value, getBuildingRow(color, type));
+                            System.out.println("Drawing building " + color + " " + value + " " + type);
+                        } else if (buildings.contains(new Building(color, value, BuildingType.DESTROYED))) {
+                            view.drawCross(i, value, getBuildingRow(color, type));
+                        }
+                    }
+                }
             }
         }
+        System.out.println();
+    }
+
+    private static int getBuildingRow(Building building) {
+        return building.getColor().ordinal() * 2 + 1 + ((building.getType() == BuildingType.WORKPLACE) ? 1 : 0);
+    }
+
+    private static int getBuildingRow(Color color, BuildingType type) {
+        return color.ordinal() * 2 + 1 + ((type == BuildingType.WORKPLACE) ? 1 : 0);
     }
 
 }

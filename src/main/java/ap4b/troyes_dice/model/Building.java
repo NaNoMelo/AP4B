@@ -28,7 +28,7 @@ public class Building {
 
     @Override
     public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
+        if ((o == null) || (getClass() != o.getClass())) return false;
         Building building = (Building) o;
         return value == building.value && color == building.color && type == building.type;
     }
@@ -36,5 +36,10 @@ public class Building {
     @Override
     public int hashCode() {
         return Objects.hash(color, value, type);
+    }
+
+    @Override
+    public String toString() {
+        return "Building{" + "color=" + color + ", value=" + value + ", type=" + type + '}';
     }
 }

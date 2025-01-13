@@ -61,8 +61,8 @@ public class DiceActionsPanel extends JPanel {
         add(changeColorButtonWhite);
         add(dice);
         add(getRessourceButton);
-        add(buildWorkplaceButton);
         add(buildPrestigeButton);
+        add(buildWorkplaceButton);
     }
 
     private void updateDice() {
@@ -86,7 +86,7 @@ public class DiceActionsPanel extends JPanel {
 
     public void setActionCallbacks(ActionListener getRessource, ActionListener buildWorkplace, ActionListener buildPrestige) {
         getRessourceButton.addActionListener(getRessource);
-        buildWorkplaceButton.addActionListener(buildPrestige);
+        buildWorkplaceButton.addActionListener(buildWorkplace);
         buildPrestigeButton.addActionListener(buildPrestige);
     }
 
